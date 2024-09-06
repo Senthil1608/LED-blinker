@@ -1,54 +1,48 @@
-# LED-blinker
+# LED Control System in C
 
-Overview
-This project implements a simple LED Control System in C++. It allows users to manage the settings of a group of LEDs, including turning them on/off, adjusting their brightness, and setting colors using RGB values in hexadecimal format.
+This project implements an LED control system in C, which simulates managing individual and group LED settings, including the LED state (ON/OFF), brightness, and color (in RGB format). The program provides a console interface for users to modify and view LED settings dynamically.
 
-The system is divided into two classes:
+## Features
 
-LEDSettings: Defines the settings for an individual LED (state, brightness, and color).
-LEDGroup: Manages the group settings (group state and group brightness) and contains a single instance of LEDSettings to represent an individual LED.
-The program interacts with the user via the console, providing options to update the LED settings or display the current status of the LED group.
+- **Individual LED Control**: Set the state, brightness, and color of a single LED.
+- **Group LED Control**: Control the entire group of LEDs with a separate brightness and state configuration.
+- **Interactive User Interface**: Command-line interaction allowing users to update settings and view the status of the LEDs.
+  
+## Program Details
 
-Features
-Individual LED Settings: Users can control the state (ON/OFF), brightness (0-255), and color (RGB in hexadecimal format) of a single LED.
-Group LED Settings: Users can manage the overall state and brightness of the group of LEDs.
-Interactive Interface: The program continuously prompts the user for input to update the settings or display the current status.
-Hexadecimal Color Input: Colors are entered in RGB hexadecimal format (e.g., FF4500 for Orange-Red).
-Classes
-1. LEDSettings
-This class defines the settings of a single LED:
+The program consists of two main structures:
+- `LEDSettings`: Defines the state, brightness, and color of an individual LED.
+- `LEDGroup`: Defines the state and brightness of an LED group, and contains an instance of `LEDSettings`.
 
-Attributes:
-uint8_t state: ON/OFF state of the LED (1 for ON, 0 for OFF).
-uint8_t brightness: Brightness level of the LED (0 to 255).
-uint32_t color: Color of the LED in RGB hexadecimal format (0xRRGGBB).
-Constructor:
-Initializes the LED state to OFF, brightness to 0, and color to black (0x000000).
-2. LEDGroup
-This class defines the settings for a group of LEDs:
+The user can perform the following actions:
+1. **Update LED Group Settings**: Modify the state, brightness, and color of the individual LED and the group.
+2. **Display LED Group Status**: View the current status of both the individual LED and the group.
+3. **Exit**: Close the application.
 
-Attributes:
+## Getting Started
 
-LEDSettings singleLED: An instance of the LEDSettings class to represent individual LED settings.
-uint8_t groupState: ON/OFF state of the entire group (1 for ON, 0 for OFF).
-uint8_t groupBrightness: Brightness level of the group (0 to 255).
-Methods:
+### Prerequisites
 
-void initLEDGroup(): Initializes the LED group with default values.
-void updateLEDGroupSettings(): Updates both individual LED and group settings based on user input.
-void displayLEDGroupStatus() const: Displays the current status of the LED group and individual LED settings.
-How to Use
-1. Compile the Program
-To compile the program, use the following command:
-g++ -o LEDControlSystem LEDControlSystem.cpp
+- A C compiler (such as `gcc` or `clang`) installed on your system.
+- Basic understanding of how to compile and run C programs.
 
-2. Run the Program
-Execute the compiled program:
-./LEDControlSystem
+### Compilation
 
-3. Interaction Options
-Once the program is running, you will be prompted to choose one of the following options:
+To compile the program, run the following command in the terminal:
 
-Update LED Group Settings: Allows you to modify the state, brightness, and color of the LED group and the individual LED.
-Display LED Group Status: Displays the current settings for both the LED group and the individual LED.
-Power OFF (Exit): Exits the program.
+gcc -o led_control led_control.c
+
+Usage
+Once compiled, run the program using:
+./led_control
+
+Code Structure
+LEDSettings struct: Stores individual LED properties (state, brightness, color).
+LEDGroup struct: Stores group properties and contains an instance of LEDSettings.
+Functions:
+initLEDGroup(): Initializes the group and LED settings.
+updateLEDGroupSettings(): Updates the group and individual LED properties.
+displayLEDGroupStatus(): Prints the current LED and group status to the console.
+userInteraction(): Interacts with the user to take input and update LED settings.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
